@@ -49,6 +49,12 @@ feature -- Operations
 			--/* Sunrise/set is considered to occur when the Sun's upper limb is    */
 			--/* 35 arc minutes below the horizon (this accounts for the refraction */
 			--/* of the Earth's atmosphere).                                        */
+		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
 		do
 			Result := sunriset ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -35.0/60.0, 1 )
 		end
@@ -57,6 +63,12 @@ feature -- Operations
 			--/* This macro computes the start and end times of civil twilight.       */
 			--/* Civil twilight starts/ends when the Sun's center is 6 degrees below  */
 			--/* the horizon.                                                         */
+		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
         do
         	Result := sunriset ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -6.0, 0 )
         end
@@ -65,7 +77,13 @@ feature -- Operations
 			--/* This macro computes the start and end times of nautical twilight.    */
 			--/* Nautical twilight starts/ends when the Sun's center is 12 degrees    */
 			--/* below the horizon.                                                   */
-        do
+		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+ 			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
+       do
         	Result := sunriset ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -12.0, 0 )
         end
 
@@ -73,7 +91,13 @@ feature -- Operations
 			--/* This macro computes the start and end times of astronomical twilight.   */
 			--/* Astronomical twilight starts/ends when the Sun's center is 18 degrees   */
 			--/* below the horizon.                                                      */
-        do
+		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+ 			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
+       do
         	Result := sunriset ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -18.0, 0 )
         end
 
@@ -89,6 +113,12 @@ feature {NONE} -- Macros
 			--/* Sunrise/set is considered to occur when the Sun's upper limb is    */
 			--/* 35 arc minutes below the horizon (this accounts for the refraction */
 			--/* of the Earth's atmosphere).                                        */
+		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
 		do
 			Result := daylen ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -35.0/60.0, 1 )
 		end
@@ -97,6 +127,12 @@ feature {NONE} -- Macros
 			--/* This macro computes the length of the day, including civil twilight. */
 			--/* Civil twilight starts/ends when the Sun's center is 6 degrees below  */
 			--/* the horizon.                                                         */
+		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
 		do
 			Result := daylen ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -6.0, 0 )
 		end
@@ -105,7 +141,13 @@ feature {NONE} -- Macros
 			--/* This macro computes the length of the day, incl. nautical twilight.  */
 			--/* Nautical twilight starts/ends when the Sun's center is 12 degrees    */
 			--/* below the horizon.                                                   */
-        do
+ 		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
+       do
         	Result := daylen ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -12.0, 0 )
         end
 
@@ -113,7 +155,13 @@ feature {NONE} -- Macros
 			--/* This macro computes the length of the day, incl. astronomical twilight. */
 			--/* Astronomical twilight starts/ends when the Sun's center is 18 degrees   */
 			--/* below the horizon.                                                      */
-        do
+ 		require
+			valid_date: attached (create {DATE}.make (year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year.to_real = year and then al_date.month.to_real = month and then al_date.day.to_real = day
+ 			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
+      do
         	Result := daylen ( year.truncated_to_integer, month.truncated_to_integer, day.truncated_to_integer, lon, lat, -18.0, 0 )
         end
 
@@ -140,8 +188,12 @@ feature {NONE} -- daylen
 				/**********************************************************************/
 				]"
 		require
-			year_range: (year >= 1801 and then year <= 2099)
+			valid_date: attached (create {DATE}.make (year, month, day)) as al_date
+			year_range: al_date.year >= 1801 and then al_date.year <= 2099
+			match_back: al_date.year = year and then al_date.month = month and then al_date.day = day
 			limb_boolean: (upper_limb = 0 or else upper_limb = 1) -- See note above
+			lon_range: lon >= -180 and then lon <= 180
+			lat_range: lat >= -90 and then lat <= 90
 		local
 			d: DOUBLE 			--,  /* Days since 2000 Jan 0.0 (negative before) */
 			obl_ecl: DOUBLE 	--,  /* Obliquity (inclination) of Earth's axis */
